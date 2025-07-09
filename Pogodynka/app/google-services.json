@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "766903572746",
+    "project_id": "pogodynka-e398e",
+    "storage_bucket": "pogodynka-e398e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766903572746:android:daa38b2a3e0a279338c2f3",
+        "android_client_info": {
+          "package_name": "com.projekt.pogodynka"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMRnlWn8QVvxlkcxP48z9uUnns-1AzSxA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

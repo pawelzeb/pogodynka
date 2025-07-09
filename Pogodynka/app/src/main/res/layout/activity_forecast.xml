@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/recycleBackground"
+    tools:context=".activities.ForecastActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:visibility="visible"
+        android:background="@color/colorBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title=""> <!-- Ukrywamy tekst tytułu -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/title_image"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:src="@drawable/prognoza"
+            android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Warszawa"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimaryLight"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fav_list"
+        android:name=".activities.ForecastActivity"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:layout_height="0dp"
+        android:background="@color/recycleBackground"
+        tools:context=".activities.ForecastActivity"
+        tools:listitem="@layout/forecast_layout" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        app:labelVisibilityMode="labeled"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        style="?attr/bottomNavigationStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_navigation" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="black75">#FF333333</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#537D9F</color>
+
+    <!-- Nawigacja -->
+    <color name="nav_bar_bg">#446781</color>
+    <color name="nav_bar_item_selected">#B5B6B6</color>
+    <color name="nav_bar_item">#6B9BBC</color>
+    <color name="colorPrimary">#446781</color>
+    <color name="colorPrimaryVariant">#00BCD4</color>
+    <color name="colorPrimaryDark">#1E2D38</color>
+    <color name="colorPrimaryLight">#FFFFFF</color>
+    <color name="colorSecondary">#365166</color>
+
+    <color name="colorSecondaryVariant">#4F5566</color>
+    <color name="colorBackground">#446781</color>
+    <color name="recycleBackground">#B1CCE2</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="textSecondaryVariant">#F4F4F4</color>
+    <color name="transparent">#00000000</color>
+
+</resources>
