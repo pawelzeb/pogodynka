@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerty</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase.js"></script>
+</head>
+<body>
+
+    <div>
+        <h3>Komunikat globalny</h3>
+            <input id="msg_global" type="text" placeholder="komunikat...">
+            <button onclick="javascript:addGlobal()">Ustaw</button>
+    </div>
+    <div>
+        <h3>Komunikat lokalny</h3>
+        <input id="miasto" type="text" placeholder="miato...">
+        <input id="msg_local" type="text" placeholder="komunikat...">
+        <button onclick="javascript:addLocal()">Ustaw</button>
+    </div>
+
+<script>
+    function addGlobal() {
+        const msg = document.getElementById("msg_global").value
+        if(msg) {
+            setAlert(msg, "msg1")
+        }
+    }        
+
+    function addLocal() {
+        const city = document.getElementById("miasto").value
+        const msg = document.getElementById("msg_local").value
+        if(city && msg) {
+            setAlert(msg, city)
+        }
+    }        
+    onload = () => {
+        initFireBase()
+    }
+    function initFireBase(bInit)
+    {
+        console.log(window.firebase)
+            console.log("initFireBase");
+            config = {
+                apiKey: "AIzaSyBdMuzQU24tYjF99SBlFcfxp4c8_dn1-hI",
+                authDomain: "pogodynka-e398e.firebaseapp.com",
+                databaseURL: "https://pogodynka-e398e-default-rtdb.europe-west1.firebasedatabase.app",
+                projectId: "pogodynka-e398e",
+                storageBucket: "pogodynka-e398e.firebasestorage.app",
+                messagingSenderId: "766903572746",
+                appId: "1:766903572746:web:04919bbb638e3a2a38c2f3"
+            };
+            firebase.initializeApp(config);
+            database = firebase.database();            
+            signIn()
+    }
+    function signIn() {
+        firebase.auth().signInWithEmailAndPassword("pogoda@mail.com",  "pogodynka321")
+        .then(userCredential => {
+        console.log("✅ Zalogowano:", userCredential.user);
+        })
+        .catch(error => {
+        console.error("❌ Błąd logowania:", error.message);
+        });
+    }
+    function setAlert(msg, city) {
+        firebase.database().ref(city).set(msg, function(error){
+            if(error){
+                console.error("Nie dodało ", error.message);
+            }
+            else{
+                console.log("Data successfully saved to FB");
+            }
+        });
+    }
+</script>
+</body>
+</html>
