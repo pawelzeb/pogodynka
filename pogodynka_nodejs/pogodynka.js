@@ -25,7 +25,8 @@ const specs = swaggerJsDoc(options);
 
 module.exports = { swaggerUi, specs };
 
-const PORT = 80;
+const PORT = process.env.PORT || 3000;
+
 
 // app.use(cors({
 //     origin: 'http://localhost:3000',    //TODO: podmienić na adres Reacta
