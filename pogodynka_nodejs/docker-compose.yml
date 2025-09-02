@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  mariadb:
+    env_file:
+      - .env
+    image: "mariadb:${MARIADB_VERSION}"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./initdb.d/pogodynka_init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app_network
+
+  backend:
+    build: .
+    env_file:
+      - .env
+    environment:
+      DB_HOST: mariadb
+      DB_USER: "${MYSQL_USER}"
+      DB_PASSWORD: "${MYSQL_PASSWORD}"
+      DB_NAME: "${MYSQL_DATABASE}"
+    networks:
+      - app_network
+    depends_on:
+      - mariadb
+    ports:
+      - "80:80"
+
+volumes:
+  mariadb_data:
+
+networks:
+  app_network:
+    driver: bridge
