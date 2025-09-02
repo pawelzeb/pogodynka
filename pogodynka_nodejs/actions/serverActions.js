@@ -3,7 +3,8 @@ const axios = require('axios')
 const cron = require('node-cron');
 const path = require('path');
 const fs = require('fs');
-var serviceAccount = require("../serviceAccountkey.json");
+var serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
+
 const fakeFBAlerts = process.argv[2] === 'FB_ALERT';
 const Database = require('../db/Database')
 
